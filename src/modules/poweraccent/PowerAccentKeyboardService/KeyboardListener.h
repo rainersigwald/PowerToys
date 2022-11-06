@@ -49,10 +49,11 @@ namespace winrt::PowerToys::PowerAccentKeyboardService::implementation
         PowerAccentSettings m_settings;
         std::function<void(LetterKey)> m_showToolbarCb;
         std::function<void(InputType)> m_hideToolbarCb;
-        std::function<void(TriggerKey)> m_nextCharCb;
+        std::function<void(TriggerKey, bool)> m_nextCharCb;
         std::function<bool(LetterKey)> m_isLanguageLetterCb;
         bool m_triggeredWithSpace;
         spdlog::stopwatch m_stopwatch;
+        bool m_shiftPressed;
 
         static inline const std::vector<LetterKey> letters = { LetterKey::VK_0,
                                                                LetterKey::VK_1,
