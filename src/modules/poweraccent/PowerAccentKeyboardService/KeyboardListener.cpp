@@ -89,7 +89,8 @@ namespace winrt::PowerToys::PowerAccentKeyboardService::implementation
 
     bool KeyboardListener::OnKeyDown(KBDLLHOOKSTRUCT info) noexcept
     {
-        if (!m_shiftPressed && (info.vkCode == VK_LSHIFT || info.vkCode == VK_RSHIFT))
+        // Shift key detected only if the toolbar is already visible to avoid conflicts with uppercase
+        if (!m_shiftPressed && m_toolbarVisible && (info.vkCode == VK_LSHIFT || info.vkCode == VK_RSHIFT))
         {
             m_shiftPressed = true;
         }
